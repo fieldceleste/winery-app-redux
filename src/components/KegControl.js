@@ -11,17 +11,17 @@ class KegControl extends React.Component {
       formVisibleOnPage: false,
       masterKegList: [],
       selectedKeg: null,
-      editing: false
+      editing: false,
     };
     this.handleClick = this.handleClick.bind(this); 
   }
 
   // for adding new Keg
-  handleAddingNewKegToList = (newKeg) => {
-    const newMasterKegList = this.state.masterKegList.concat(newKeg);
-    this.setState({
-      masterKegList: newMasterKegList,
-      formVisibleOnPage: false 
+    handleAddingNewKegToList = (newKeg) => {
+      const newMasterKegList = this.state.masterKegList.concat(newKeg);
+      this.setState({
+        masterKegList: newMasterKegList,
+        formVisibleOnPage: false 
      });
     }
 
@@ -56,13 +56,22 @@ class KegControl extends React.Component {
           selectedKeg: null
         });
     }
-  
+
+    handleBuyGlass = (id) => {
+      const buyGlass = this.state.masterKegList.filter(keg => keg.id !== id);
+      buyGlass
+
+    }
+
+
+
     handleClick = () => {
       if (this.state.selectedKeg != null) {
         this.setState({
           formVisibleOnPage: false,
           selectedKeg: null,
-          editing: false
+          editing: false,
+          count:prevState.count - 1
         });
       } else {
         this.setState(prevState => ({
@@ -70,6 +79,7 @@ class KegControl extends React.Component {
         }));
       }
     }
+
 
   render(){
     let currentlyVisibleState = null;
@@ -88,6 +98,7 @@ class KegControl extends React.Component {
       keg = {this.state.selectedKeg} 
       onClickingDelete = {this.handleDeletingKeg} 
       onClickingEdit = {this.handleEditClick} />
+      onClickingBuy = {this.handleBuyGlass}
       buttonText = "Return to Keg List";
     
     }
