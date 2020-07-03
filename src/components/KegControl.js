@@ -73,7 +73,7 @@ class KegControl extends React.Component {
 
   render(){
     let currentlyVisibleState = null;
-    let buttonText = null; // new code
+    let buttonText = null; 
     
     if (this.state.editing ) {      
       currentlyVisibleState = 
@@ -85,7 +85,7 @@ class KegControl extends React.Component {
     else if(this.state.selectedKeg != null) {
       currentlyVisibleState = 
       <KegDetail 
-      Keg = {this.state.selectedKeg} 
+      keg = {this.state.selectedKeg} 
       onClickingDelete = {this.handleDeletingKeg} 
       onClickingEdit = {this.handleEditClick} />
       buttonText = "Return to Keg List";
