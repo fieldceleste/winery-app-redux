@@ -1,4 +1,4 @@
-# Celeste's Wunderlust Winery 🍷
+# Celeste's Wonderlust Winery 🍷
 
 ### React fundamentals, July 2, 2020
 

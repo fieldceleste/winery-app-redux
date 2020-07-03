@@ -15,18 +15,18 @@ function KegList(props) {
       {props.kegList.map((keg) => 
         <Keg 
           whenKegClicked = { props.onKegSelection }
-          name={Keg.name}
-          brand={Keg.brand}
-          price={Keg.price}
-          abv={Keg.abv}
-          id={Keg.id}
-          key={Keg.id} />
+          name={keg.name}
+          brand={keg.brand}
+          price={keg.price}
+          abv={keg.abv}
+          id={keg.id}
+          key={keg.id} />
       )}
       </div>
     </React.Fragment>
   );
 }
-// Add propTypes for KegList.
+
 KegList.propTypes = {
   kegList: PropTypes.array,
   onKegSelection: PropTypes.func
