@@ -59,13 +59,19 @@ class KegControl extends React.Component {
 
     // for buying a glass
     handleBuyGlass = (id) => {
-      id.quantity -= 1; 
+     if (id.quantity >= 0){
+       return id.quantity 
+       } else {
+      (id.quantity -= 1)
+    }
       const editedMasterKegList = this.state.masterKegList.filter(keg => keg.id !== this.state.selectedKeg.id).concat(id);
       this.setState({
         masterKegList: editedMasterKegList,
         selectedKeg: null
+       
       });
     }
+ 
     
 
     handleClick = () => {
