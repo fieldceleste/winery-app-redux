@@ -12,8 +12,7 @@ class KegControl extends React.Component {
       formVisibleOnPage: false,
       masterKegList: [],
       selectedKeg: null,
-      editing: false,
-      minVal: 0
+      editing: false
     }; 
   }
 
@@ -56,7 +55,6 @@ class KegControl extends React.Component {
         });
     }
 
-
     // for buying a glass
     handleBuyGlass = (id) => {
       const buyGlass = this.state.masterKegList.filter(keg => keg.id === id)[0];
@@ -70,8 +68,7 @@ class KegControl extends React.Component {
       });
     }
  
-    
-
+  
     handleClick = () => {
       if (this.state.selectedKeg != null) {
         this.setState({
@@ -86,7 +83,6 @@ class KegControl extends React.Component {
       }
     }
   
-
 
   render() {
     let currentlyVisibleState = null;
@@ -128,12 +124,3 @@ class KegControl extends React.Component {
 
 
 export default KegControl;
-
-
-// if (buyGlass >= 0){
-//   return "Out of Stock"
-//  } else {
-//    buyGlass.quantity -= 1;
-//  }
-//  return buyGlass
-// }
