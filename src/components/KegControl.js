@@ -68,7 +68,7 @@ class KegControl extends React.Component {
       });
     }
  
-  
+   // handle click function
     handleClick = () => {
       if (this.state.selectedKeg != null) {
         this.setState({

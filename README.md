@@ -5,18 +5,18 @@
 
 #### _**By: Celeste Field**_
 
-## <center> Description
+##  Description
 
 This application was built with React components and JSX, to create a winery inventory site. 
 
 <hr/>
 
-## <center> Component Diagram
+##  Component Diagram
 
 ![component structure](src/keg.png)
 <hr />
 
-## <center> User Stories
+##  User Stories
 
 * As a user, I want to see a list/menu of all available kegs. For each keg, I want to see its name, brand, price and alcoholContent. √
 * As a user, I want to submit a form to add a new keg to a list.√
@@ -28,7 +28,7 @@ This application was built with React components and JSX, to create a winery inv
 
 <hr/>
 
-## <center> Setup/Installation Requirements
+##  Setup/Installation Requirements
 
 
 #### Install this application -
@@ -41,7 +41,7 @@ This application was built with React components and JSX, to create a winery inv
 * To run on server type `$npm start`
 <hr /> 
 
-## <center> Technologies Used 
+##  Technologies Used 
 
 
 
@@ -55,11 +55,11 @@ This application was built with React components and JSX, to create a winery inv
 
 <hr />
 
-## <center> License
+##  License
 
 * This webpage is licensed under the MIT license.*
 
-#### Copyright (c) 2020 **_Alex Skreen_**
+#### Copyright (c) 2020 **_Celeste Field_**
 
 
 
