@@ -13,7 +13,7 @@ class KegControl extends React.Component {
       masterKegList: [],
       selectedKeg: null,
       editing: false,
-      quantity:0
+      minVal: 0
     }; 
   }
 
@@ -59,7 +59,7 @@ class KegControl extends React.Component {
 
     // for buying a glass
     handleBuyGlass = (id) => {
-      id.quantity -= 1;
+      id.quantity -= 1; 
       const editedMasterKegList = this.state.masterKegList.filter(keg => keg.id !== this.state.selectedKeg.id).concat(id);
       this.setState({
         masterKegList: editedMasterKegList,
