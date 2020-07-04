@@ -5,9 +5,10 @@ function KegDetail(props){
   const { keg, onClickingDelete, onClickingBuy } = props;
   return (
     <React.Fragment>
-      <h1>Wine Keg Details</h1>
-      <h3>{keg.name} - {keg.brand}</h3>
-      <p><em>Price: ${keg.price}.00</em></p>
+      <h1>Wine Details</h1>
+      <h3>Name:{keg.name}</h3>
+      <h4>Distributed by:{keg.brand}</h4>
+      <p><em>Price per Glass: ${keg.price}.00</em></p>
       <p><em>Alcohol Content: %{keg.abv}.00</em></p>
       <p><em>Glasses Available in Keg: {keg.quantity}</em></p>
       <button onClick={() => onClickingBuy(keg) }>Buy a Glass</button> 

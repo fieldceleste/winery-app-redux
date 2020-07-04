@@ -13,8 +13,8 @@ class KegControl extends React.Component {
       masterKegList: [],
       selectedKeg: null,
       editing: false,
-    };
-    this.handleClick = this.handleClick.bind(this); 
+      quantity:0
+    }; 
   }
 
   // for adding new Keg
@@ -48,9 +48,7 @@ class KegControl extends React.Component {
 
     // for editing Keg in list
     handleEditingKegInList = (kegToEdit) => {
-      const editedMasterKegList = this.state.masterKegList
-        .filter(keg => keg.id !== this.state.selectedKeg.id)
-        .concat(kegToEdit);
+      const editedMasterKegList = this.state.masterKegList.filter(keg => keg.id !== this.state.selectedKeg.id).concat(kegToEdit);
       this.setState({
           masterKegList: editedMasterKegList,
           editing: false,
@@ -61,10 +59,14 @@ class KegControl extends React.Component {
 
     // for buying a glass
     handleBuyGlass = (id) => {
-      console.log("hitting buy button")
-      id
-      
+      id.quantity -= 1;
+      const editedMasterKegList = this.state.masterKegList.filter(keg => keg.id !== this.state.selectedKeg.id).concat(id);
+      this.setState({
+        masterKegList: editedMasterKegList,
+        selectedKeg: null
+      });
     }
+    
 
     handleClick = () => {
       if (this.state.selectedKeg != null) {
