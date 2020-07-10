@@ -19,4 +19,7 @@ describe('indexReducer', () => {
   test('initial state of kegListReducer matches root reducer', () => {
     expect(store.getState().masterKegList).toEqual(kegListReducer(undefined, {type: null}))
   });
+  test('initial state of formVisibleReducer matches root reducer', () => {
+    expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, {type: null}))
+  });
 });
