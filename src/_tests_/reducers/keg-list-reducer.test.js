@@ -73,7 +73,7 @@ describe('kegListReducer', () => {
     const {name, brand, price, abv, quantity, id} = kegData;
     const newQuantity = quantity - 1;
     action = a.updateKeg({
-      id: 2,
+      id: 1,
       name: name,
       brand: brand,
       price: price,
@@ -88,7 +88,14 @@ describe('kegListReducer', () => {
         price: price,
         abv:abv, 
         quantity:newQuantity,
-      }
+      },
+      2: { 
+        name: 'Merolot',
+        brand: 'Toms Winery',
+        price: '3',
+        abv: '10',
+        quantity: '8',
+        id: 2  }
     });
   });
 });
