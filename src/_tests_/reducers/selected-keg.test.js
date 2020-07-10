@@ -24,7 +24,7 @@ describe("selectedKegReducer", () => {
       abv: '3',
       quantity: '5',
       id: 1
-    })
+    });
     expect(selectedKegReducer(null, action)).toEqual( {
       name: 'Chardonnay',
       brand: 'Celestes Winery',
@@ -32,6 +32,10 @@ describe("selectedKegReducer", () => {
       abv: '3',
       quantity: '5',
       id: 1
-    })
-  })
+    });
+  });
+  test("should toggle off of selected keg", () => {
+    action = a.selectKeg();
+    expect(selectedKegReducer(currentState, action)).toEqual(null);
+  });
 });
