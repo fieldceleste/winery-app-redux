@@ -38,10 +38,10 @@ export const selectKeg =(mainKeg) => {
   }
  }
 }
-export const updateKeg = (mainKeg) => {
+export const buyGlass = (mainKeg) => {
   const {name, brand, price, abv, quantity, id} = mainKeg;
   return{
-   type: c.UPDATE_KEG,
+   type: c.BUY_GLASS,
       name: name,
       brand: brand,
       price: price,

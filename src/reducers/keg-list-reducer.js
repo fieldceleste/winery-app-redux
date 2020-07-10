@@ -14,9 +14,9 @@ export default (state = {}, action) => {
       id: id
       }
     });
-  case c.UPDATE_KEG:
+  case c.BUY_GLASS:
     const newQuantityState = { ...state };
-    let updateKeg = newQuantityState[id].quantity - 1;
+    let buyGlass = newQuantityState[id].quantity - 1;
   
     return Object.assign({} , state, {
       [id]:  {
@@ -25,7 +25,7 @@ export default (state = {}, action) => {
         brand: brand,
         price: price,
         abv:abv, 
-        quantity: updateKeg,
+        quantity: buyGlass,
       },
     });
   case c.DELETE_KEG:

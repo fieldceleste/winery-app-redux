@@ -36,9 +36,9 @@ describe('discussion forum actions', () => {
       id: 1
     });
   });
-  test('updateKeg should create UPDATE_KEG ', () => {
-    expect(actions.updateKeg({name: 'Chardonnay', brand: 'Celestes Winery', price: '4',abv: '3', quantity: '5', id: 1 })).toEqual({
-      type: c.UPDATE_KEG,
+  test('buyGlass should create BUY_GLASS ', () => {
+    expect(actions.buyGlass({name: 'Chardonnay', brand: 'Celestes Winery', price: '4',abv: '3', quantity: '5', id: 1 })).toEqual({
+      type: c.BUY_GLASS,
       name: 'Chardonnay',
       brand: 'Celestes Winery',
       price: '4',

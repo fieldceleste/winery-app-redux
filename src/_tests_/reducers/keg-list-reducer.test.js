@@ -32,6 +32,7 @@ describe('kegListReducer', () => {
   test('Should return default state if there is no action type passed into the reducer', () => {
     expect(kegListReducer({}, {type: null})).toEqual({});
   });
+
   test('Should successfully add new keg data to masterKegList', () => {
     const { name, brand, price, abv, quantity, id } = kegData;
 
@@ -72,7 +73,7 @@ describe('kegListReducer', () => {
   test('decrement quantity on keg', () => {
     const {name, brand, price, abv, quantity, id} = kegData;
     const newQuantity = quantity - 1;
-    action = a.updateKeg({
+    action = a.buyGlass({
       id: 1,
       name: name,
       brand: brand,
