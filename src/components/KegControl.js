@@ -5,62 +5,87 @@ import KegDetail from './KegDetail';
 import EditKegForm from './EditKegForm';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
-import * as a from './../actions';
+import * as a from './../actions'; 
 
-class KegControl extends React.Component {
+function KegControl(props){
+ const  {masterPostList, formVisibleOnPage, selectedKeg, } = props;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      // formVisibleOnPage: false,
-      selectedKeg: null,
-      editing: false
-    }; 
+// class KegControl extends React.Component {
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     // formVisibleOnPage: false,
+  //     selectedKeg: null,
+  //     editing: false
+  //   }; 
+  // }
+
+   // handle click function
+   handleClick = () => {
+    const {dispatch} = props;
+    const action = a.toggleForm();
+    dispatch(action);
   }
-     // handle click function
-     handleClick = () => {
-      if (this.state.selectedKeg != null) {
-        this.setState({
-          // formVisibleOnPage: false,
-          selectedKeg: null,
-          editing: false,
-        });
-      } else {
-      const { dispatch } = this.props;
-      const action = a.toggleForm();
-      dispatch(action);
-        // this.setState(prevState => ({
-        //   formVisibleOnPage: !prevState.formVisibleOnPage,
-        
-      }
-    }
+  //   if (this.state.selectedKeg != null) {
+  //     this.setState({
+  //       formVisibleOnPage: false,
+  //       selectedKeg: null,
+  //       editing: false,
+  //     });
+  //   } else {
+  //     this.setState(prevState => ({
+  //       formVisibleOnPage: !prevState.formVisibleOnPage,
+  //     }));
+  //   }
+  // }
 
   // for adding new Keg
   handleAddingNewKegToList = (newKeg) => {
-    const { dispatch } = this.props;
+    const {dispatch} = props;
+    const {name, brand, price, abv, quantity, id} = newKeg;
     const action = a.addKeg(newKeg);
     dispatch(action);
     const action2 = a.toggleForm();
-    dispatch(action2);
+    dispatch(action2)
   }
+  //   const { dispatch } = this.props;
+  //   const {  name, brand, price, abv, quantity, id } = newKeg;
+  //   const action = {
+  //     type: 'ADD_KEG',
+  //     name: name,
+  //     brand: brand,
+  //     price: price,
+  //     abv:abv, 
+  //     quantity:quantity,
+  //     id: id
+  //   }
+  //   dispatch(action);
+  //   this.setState({formVisibleOnPage: false});
+  // }
 
     //for updating
-    handleChangingSelectedKeg = (id) => {
-      const selectedKeg = this.props.masterKegList[id];
-      this.setState({
-        selectedKeg: selectedKeg});
-    }
+    handleChangingSelectedKeg = () => {  //id
+      const { dispatch } = props;
+      const action = a.selectedKeg(null);
+      dispatch(action);
+    
+    //   const selectedKeg = this.props.masterKegList[id];
+    //   this.setState({selectedKeg: selectedKeg});
+    // }
+
 
     // for deleting
     handleDeletingKeg = (id) => {
       const { dispatch } = this.props;
-      const action = a.deleteKeg(id);
+      const action = {
+        type: 'DELETE_KEG',
+        id: id
+      }
       dispatch(action);
-      this.setState({
-        selectedKeg: null});
+      this.setState({selectedKeg: null});
     }
-     
-    
+
     // for editing
     handleEditClick = () => {
       this.setState({editing: true});
@@ -68,18 +93,34 @@ class KegControl extends React.Component {
 
     // for editing Keg in list
     handleEditingKegInList = (kegToEdit) => {
-      const { dispatch } = this.props;
-      const action = a.addKeg(kegToEdit);
+      const { dispatch } = props;
+      const action = a.toggleForm();
       dispatch(action);
-      this.setState({
-        editing: false,
-        selectedTicket: null
-      });
-    }
+      const action2 = a.addKeg(kegToEdit);
+      dispatch(action2);
+    }                   // handleSelectedPotionRefresh();
+  //     const { dispatch } = this.props;
+  //     const { name, brand, price, abv, quantity, id } = kegToEdit;
+  //     const action = {
+  //       type: 'ADD_KEG',
+  //       name: name,
+  //       brand: brand,
+  //       price: price,
+  //       abv:abv, 
+  //       quantity:quantity,
+  //       id: id
+  //    }
+  //   dispatch(action);
+  //   this.setState({
+  //     editing: false,
+  //     selectedKeg: null
+  //   });
+  // }
 
 
     // for buying a glass
     handleBuyGlass = (id) => {
+      // const buyGlass = this.state.masterKegList.filter(keg => keg.id === id)[0];
       const buyGlass = this.props.masterKegList[id];
      if (buyGlass.quantity > 0 ) {
         buyGlass.quantity -= 1
