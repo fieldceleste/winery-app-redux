@@ -66,7 +66,29 @@ describe('kegListReducer', () => {
     abv: '10',
     quantity: '8',
     id: 2  }
+    });
+  });
 
+  test('decrement quantity on keg', () => {
+    const {name, brand, price, abv, quantity, id} = kegData;
+    const newQuantity = quantity - 1;
+    action = a.updateKeg({
+      id: 2,
+      name: name,
+      brand: brand,
+      price: price,
+      abv: abv, 
+      quantity:quantity,
+    })
+    expect(kegListReducer(currentState, action)).toEqual({
+      [id] : {
+        id: id,
+        name: name,
+        brand: brand,
+        price: price,
+        abv:abv, 
+        quantity:newQuantity,
+      }
     });
   });
 });

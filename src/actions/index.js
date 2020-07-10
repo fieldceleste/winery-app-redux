@@ -36,5 +36,17 @@ export const selectKeg =(mainKeg) => {
   return {
     type: c.SELECT_KEG
   }
+ }
 }
-}
+export const updateKeg = (mainKeg) => {
+  const {name, brand, price, abv, quantity, id} = mainKeg;
+  return{
+   type: c.UPDATE_KEG,
+      name: name,
+      brand: brand,
+      price: price,
+      abv:abv, 
+      quantity: quantity,
+      id: id
+  }
+} 

@@ -14,7 +14,7 @@ describe('discussion forum actions', () => {
       id: 1
     });
   });
-  test('toggleFrom should create TOGGLE_FORM action', () => {
+  test('toggleForm should create TOGGLE_FORM action', () => {
     expect(actions.toggleForm()).toEqual({
       type: c.TOGGLE_FORM
     });
@@ -25,7 +25,7 @@ describe('discussion forum actions', () => {
       id: 1
     });
   });
-  test('selectPost should create SELECT_POST action', () => {
+  test('selectKeg should create SELECT_KEG action', () => {
     expect(actions.selectKeg({id: 1, name: 'Chardonnay',brand: 'Celestes Winery', price: '4', abv: '3', quantity: '5', id: 1})).toEqual ({
       type: c.SELECT_KEG,
       name: 'Chardonnay',
@@ -34,6 +34,17 @@ describe('discussion forum actions', () => {
       abv: '3',
       quantity: '5',
       id: 1
+    });
+  });
+  test('updateKeg should create UPDATE_KEG ', () => {
+    expect(actions.updateKeg({name: 'Merolot', brand: 'Toms Winery', price: '3',abv: '10', quantity: '8', id: 2 })).toEqual({
+      type: c.UPDATE_KEG,
+      name: 'Merolot', 
+      brand: 'Toms Winery', 
+      price: '3',
+      abv: '10', 
+      quantity: '8', 
+      id: 2
     });
   });
 });
