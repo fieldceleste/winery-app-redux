@@ -2,7 +2,7 @@ import rootReducer from '../../reducers/index';
 import { createStore } from 'redux';
 import formVisibleReducer from '../../reducers/form-visible-reducer';
 import kegListReducer from '../../reducers/keg-list-reducer';
-// import selectedKegReducer from '../../reducers/selected-keg-reducer';
+import selectedKegReducer from '../../reducers/selected-keg-reducer';
 import * as a from './../../actions/index';
 
 
@@ -14,6 +14,7 @@ describe('indexReducer', () => {
    expect (rootReducer({}, {type: null})).toEqual({
      masterKegList:{},
      formVisibleOnPage: false,
+     selectedKeg: null
     
     });
   });
@@ -38,11 +39,23 @@ describe('indexReducer', () => {
      store.dispatch(action);
      expect(store.getState().masterKegList).toEqual(kegListReducer(undefined,action));
   });
-  
+
   test('check that TOGGLE_FORM changes occur in formVisibleReducer and root reducer', () => {
     const action = a.toggleForm();
     store.dispatch(action);
     expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, action));
   
+  });
+  test('check that SELECT_KEG changes occur in selectedKegReducer and root reducer', () => {
+    const action = a.selectKeg ({
+      name: 'Chardonnay',
+      brand: 'Celestes Winery',
+      price: '4',
+      abv: '3',
+      quantity: '5',
+      id: 1 
+      })
+    store.dispatch(action);
+    expect(store.getState().selectedKeg).toEqual(selectedKegReducer(undefined, action));
   });
 });
