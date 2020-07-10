@@ -57,7 +57,8 @@ describe('kegListReducer', () => {
 
   test('Should successfully delete a keg', () =>{
     action = a.deleteKeg(1);
-  expect(kegListReducer(currentState, action)).toEqual({
+
+   expect(kegListReducer(currentState, action)).toEqual({
     2: { 
     name: 'Merolot',
     brand: 'Toms Winery',

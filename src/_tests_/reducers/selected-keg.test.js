@@ -16,4 +16,22 @@ describe("selectedKegReducer", () => {
   test("should return default without recognized action type", () => {
     expect(selectedKegReducer(null, {type:null})).toEqual(null)
   })
+  test("should select keg based on input", () => {
+    action = a.selectKeg({
+      name: 'Chardonnay',
+      brand: 'Celestes Winery',
+      price: '4',
+      abv: '3',
+      quantity: '5',
+      id: 1
+    })
+    expect(selectedKegReducer(null, action)).toEqual( {
+      name: 'Chardonnay',
+      brand: 'Celestes Winery',
+      price: '4',
+      abv: '3',
+      quantity: '5',
+      id: 1
+    })
+  })
 });
