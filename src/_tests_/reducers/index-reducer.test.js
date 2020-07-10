@@ -9,6 +9,7 @@ import * as a from './../../actions/index';
 let store = createStore(rootReducer);
 
 describe('indexReducer', () => {
+  
   test('Should return default state if no action type is recognized', () => {
    expect (rootReducer({}, {type: null})).toEqual({
      masterKegList:{},
@@ -36,5 +37,12 @@ describe('indexReducer', () => {
      });
      store.dispatch(action);
      expect(store.getState().masterKegList).toEqual(kegListReducer(undefined,action));
+  });
+  
+  test('check that TOGGLE_FORM changes occur in formVisibleReducer and root reducer', () => {
+    const action = a.toggleForm();
+    store.dispatch(action);
+    expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, action));
+  
   });
 });
