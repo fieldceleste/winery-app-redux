@@ -14,9 +14,15 @@ describe('discussion forum actions', () => {
       id: 1
     });
   });
-  it('toggleFrom should create TOGGLE_FORM action', () => {
+  test('toggleFrom should create TOGGLE_FORM action', () => {
     expect(actions.toggleForm()).toEqual({
       type: c.TOGGLE_FORM
+    });
+  });
+  test('deleteKeg should create DELETE_KEG action', () => {
+    expect(actions.deleteKeg(1)).toEqual({
+      type: c.DELETE_KEG,
+      id: 1
     });
   });
 });
