@@ -25,4 +25,15 @@ describe('discussion forum actions', () => {
       id: 1
     });
   });
+  test('selectPost should create SELECT_POST action', () => {
+    expect(actions.selectKeg({id: 1, name: 'Chardonnay',brand: 'Celestes Winery', price: '4', abv: '3', quantity: '5', id: 1})).toEqual ({
+      type: c.SELECT_KEG,
+      name: 'Chardonnay',
+      brand: 'Celestes Winery',
+      price: '4',
+      abv: '3',
+      quantity: '5',
+      id: 1
+    });
+  });
 });

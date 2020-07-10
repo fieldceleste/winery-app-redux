@@ -4,7 +4,7 @@ export const addKeg = (addKeg) => {
   const {name, brand, price, abv,quantity, id} = addKeg;
   return {
     type: c.ADD_KEG,
-    name: name,
+      name: name,
       brand: brand,
       price: price,
       abv:abv, 
@@ -19,3 +19,22 @@ export const deleteKeg = (id) => ({
   type: c.DELETE_KEG,
   id
 });
+export const selectKeg =(mainKeg) => {
+  if (mainKeg!= null) {
+  const {name, brand, price, abv,quantity, id} = mainKeg;
+
+  return{
+   type: c.SELECT_KEG,
+      name: name,
+      brand: brand,
+      price: price,
+      abv:abv, 
+      quantity: quantity,
+      id: id
+  }
+} else {
+  return {
+    type: c.SELECT_KEG
+  }
+}
+}
