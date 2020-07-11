@@ -9,7 +9,7 @@ import * as a from './../actions';
 
 
 function KegControl(props){
- const  {masterKegList, formVisibleOnPage, selectedKeg, editing } = props;
+ const  {masterKegList, formVisibleOnPage, selectedKeg, editKeg } = props;
 
 // class KegControl extends React.Component {
 
@@ -52,7 +52,6 @@ function KegControl(props){
   // for adding new Keg
  const handleAddingNewKegToList = (newKeg) => {
     const {dispatch} = props;
-    const {name, brand, price, abv, quantity, id} = newKeg;
     const action = a.addKeg(newKeg);
     dispatch(action);
     const action2 = a.toggleForm();
@@ -74,7 +73,7 @@ function KegControl(props){
   // }
 
     //for updating
-   const handleChangingSelectedKeg = () => {  //id
+    const handleChangingSelectedKeg = (id) => {  //id
       const { dispatch } = props;
       const action = a.selectKeg(null);
       dispatch(action);
@@ -84,12 +83,51 @@ function KegControl(props){
     // }
     }
 
+        // for editing Keg in list
+        const handleEditingKegInList = (kegToEdit) => {
+          const { dispatch } = props;
+          const action = a.toggleForm();
+          dispatch(action);
+          const action2 = a.addKeg(kegToEdit);
+          dispatch(action2);
+          handleChangingSelectedKeg();
+        }  
+                     
+      //     const { dispatch } = this.props;
+      //     const { name, brand, price, abv, quantity, id } = kegToEdit;
+      //     const action = {
+      //       type: 'ADD_KEG',
+      //       name: name,
+      //       brand: brand,
+      //       price: price,
+      //       abv:abv, 
+      //       quantity:quantity,
+      //       id: id
+      //    }
+      //   dispatch(action);
+      //   this.setState({
+      //     editing: false,
+      //     selectedKeg: null
+      //   });
+      // }
+
+  // for editing
+    const handleEditClick = () => {
+    const { dispatch } = props;
+    const action = a.editKeg();
+    dispatch(action);
+      // this.setState({editing: true});
+    }
+
+
+
+
     // for deleting
     const handleDeletingKeg = (id) => {
       const { dispatch } = props;
       const action = a.deleteKeg(id);
       dispatch(action);
-      handleChangingSelectedKeg();
+      // handleChangingSelectedKeg();
     }
     //   const { dispatch } = this.props;
     //   const action = {
@@ -99,39 +137,6 @@ function KegControl(props){
     //   dispatch(action);
     //   this.setState({selectedKeg: null});
     // }
-
-    // for editing
-   const handleEditClick = () => {
-      this.setState({editing: true});
-    }
-
-    // for editing Keg in list
-    const handleEditingKegInList = (kegToEdit) => {
-      const { dispatch } = props;
-      const action = a.toggleForm();
-      dispatch(action);
-      const action2 = a.addKeg(kegToEdit);
-      dispatch(action2);
-      handleChangingSelectedKeg();
-    }  
-                 
-  //     const { dispatch } = this.props;
-  //     const { name, brand, price, abv, quantity, id } = kegToEdit;
-  //     const action = {
-  //       type: 'ADD_KEG',
-  //       name: name,
-  //       brand: brand,
-  //       price: price,
-  //       abv:abv, 
-  //       quantity:quantity,
-  //       id: id
-  //    }
-  //   dispatch(action);
-  //   this.setState({
-  //     editing: false,
-  //     selectedKeg: null
-  //   });
-  // }
 
 
     // for buying a glass
@@ -155,7 +160,7 @@ function KegControl(props){
     let currentlyVisibleState = null;
     let buttonText = null;
     
-    if (editing) {               /////Edit form
+    if (editKeg) {               /////Edit form
       currentlyVisibleState = <EditKegForm 
       keg = {selectedKeg} 
       onEditKeg= {handleEditingKegInList} />
@@ -177,7 +182,7 @@ function KegControl(props){
     } else {
       currentlyVisibleState = <KegList                     // Keg List
       kegList={masterKegList} 
-      onKegSelection={handleChangingSelectedKeg} />
+      onKegSelection={handleSelectedKeg} />
       buttonText = "Add Keg"; 
 
     } 
@@ -193,7 +198,7 @@ function KegControl(props){
   masterKegList: PropTypes.object,
   formVisibleOnPage: PropTypes.bool,
   selectedKeg: PropTypes.object,
-  editing: PropTypes.bool
+  editKeg: PropTypes.bool
 };
 
 
@@ -202,10 +207,10 @@ const mapStateToProps = state => {
     masterKegList: state.masterKegList,
     formVisibleOnPage: state.formVisibleOnPage,
     selectedKeg: state.selectedKeg,
-    editing: state.editing
+    editKeg: state.editKeg
   }
 }
 
-KegControl = connect(mapStateToProps)(KegControl);
+KegControl = connect(mapStateToProps)(KegControl)
 
 export default KegControl;

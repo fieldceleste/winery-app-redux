@@ -19,6 +19,12 @@ export const deleteKeg = (id) => ({
   type: c.DELETE_KEG,
   id
 });
+
+export const editKeg = (id) => ({
+  type: c.EDIT_KEG,
+  id
+});
+
 export const selectKeg =(mainKeg) => {
   if (mainKeg!= null) {
   const {name, brand, price, abv,quantity, id} = mainKeg;
